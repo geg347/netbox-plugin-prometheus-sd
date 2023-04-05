@@ -48,6 +48,9 @@ class PrometheusDeviceSerializer(serializers.ModelSerializer):
             labels["site"] = obj.site.name
             labels["site_slug"] = obj.site.slug
 
+        if hasattr(obj, "rack") and obj.rack is not None:
+            labels["rack"] = obj.rack.name
+
         return labels.get_labels()
 
 
